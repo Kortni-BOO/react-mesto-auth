@@ -14,8 +14,11 @@ function Header(props) {
                     <Link className="header__link" to="/signup">Регистрация</Link>
                 </Route>
                 <Route exact path="/">
-                    <p className="header__text">{props.onEmail}</p>
-                    <Link className="header__link" to="/signin" onClick={props.onSignOut}>Выйти</Link>
+                    <button onClick={props.onHeaderOpen} className="header__button"></button>
+                    <div className="header__content">
+                        <p className="header__text">{props.onEmail}</p>
+                        <Link className="header__link" to="/signin" onClick={props.onSignOut}>Выйти</Link>
+                    </div>
                 </Route>
             </Switch>
         </header>

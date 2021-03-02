@@ -16,3 +16,10 @@
 .header__link:visited{
     color: #FFFFFF;
 }
+
+@media screen and (min-width:320px) and (max-width: 768px){
+    .header__link {
+        margin: 0;
+        text-align: center;
+    }
+}

@@ -5,6 +5,8 @@ function AddPlacePopup(props) {
     const [name, setName] = React.useState('');
     const [link, setLink] = React.useState('');
 
+
+
     function handleChangeName(e) {
         setName(e.target.value);
     }
@@ -20,6 +22,8 @@ function AddPlacePopup(props) {
           name,
           link,
         });
+        setName('');
+        setLink('');
     }
 
     return (
@@ -45,6 +49,7 @@ function AddPlacePopup(props) {
             maxLength="30"
             required
             noValidate
+            value={name}
             onChange={handleChangeName}
           />
           <span
@@ -60,6 +65,7 @@ function AddPlacePopup(props) {
             placeholder="Ссылка на картинку"
             required
             noValidate
+            value={link}
             onChange={handleChangeLink}
           />
           <span

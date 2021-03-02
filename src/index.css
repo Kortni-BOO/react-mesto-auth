@@ -94,3 +94,7 @@ code {
 @import url(./blocks/popup/__image/_auth/popup__image_auth.css);
 @import url(./blocks/popup/__info/popup__info_auth.css);
 @import url(./blocks/popup/__content/popup__contant_auth.css);
+@import url(./blocks/header/content/header__context.css);
+@import url(./blocks/header/__button/header__button.css);
+@import url(./blocks/info/info__user.css);
+@import url(./blocks/header/__close/header__close.css);

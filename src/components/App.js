@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import { Route, Redirect, Switch, useHistory, Link } from "react-router-dom";
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
@@ -15,6 +15,7 @@ import Login from "./Login";
 import * as auth from "../utils/auth.js";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
+import HeaderPopup from "./HeaderPopupOpen";
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({name:'',about:''});
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState([]);
+  const [selectedCard, setSelectedCard] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isEmail, setEmail] = React.useState('');
@@ -160,6 +161,10 @@ function App() {
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
+  const [isHeaderPopup, setIsHeaderPopup] = React.useState(false);
+  function handleHeaderPopupOpen() {
+    setIsHeaderPopup(true);
+  }
   /* Закрытие попапов */
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
@@ -167,6 +172,7 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsImagePopupOpen(false);
     setIsInfoTooltip(false);
+    setIsHeaderPopup(false);
   }
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -174,8 +180,9 @@ function App() {
   }
   return (
     <div className="page">
+      <HeaderPopup isOpen={isHeaderPopup} isEmail={isEmail} onClose={closeAllPopups}/>
       <CurrentUserContext.Provider value={currentUser}>
-        <Header onEmail={isEmail} onSignOut={onSignOut}/>
+        <Header onEmail={isEmail} onSignOut={onSignOut} onHeaderOpen={handleHeaderPopupOpen}/>
         <Switch>
           <ProtectedRoute
             exact path="/"
